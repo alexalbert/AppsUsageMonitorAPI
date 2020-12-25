@@ -18,6 +18,7 @@ import bot.box.appusage.datamanager.DataManager;
 public class AppUsageProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
+
         BotMonitor.instantiate(getContext());
         DataManager.init();
         return true;

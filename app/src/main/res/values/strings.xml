@@ -22,4 +22,6 @@
         <item>#cd10cc</item>
         <item>#fe8301</item>
     </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
