@@ -30,6 +30,8 @@ import bot.box.appusage.model.TimeLine;
 import bot.box.appusage.utils.SortOrder;
 import bot.box.appusage.utils.UsageUtils;
 
+import static android.content.Context.TELEPHONY_SERVICE;
+
 /**
  * Created by BarryAllen
  *
@@ -123,7 +125,7 @@ public class DataManager {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 canCalculateDataUsage = true;
                 NetworkStatsManager networkStatsManager = (NetworkStatsManager) context.getSystemService(Context.NETWORK_STATS_SERVICE);
-                TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
                 mobileData = getMobileData(context, telephonyManager, networkStatsManager, offset);
                 wifiData = getWifiUsageData(context, telephonyManager, networkStatsManager, offset);
             } else {
@@ -157,6 +159,7 @@ public class DataManager {
 
                 item.mName = UsageUtils.parsePackageName(packageManager, item.mPackageName);
                 newList.add(item);
+                Log.i("?????????????????????? ", item.toString());
             }
 
             Collections.sort(newList, (left, right) -> (int) (right.mUsageTime - left.mUsageTime));
@@ -188,14 +191,19 @@ public class DataManager {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private Map<String, Long> getMobileData(Context context, TelephonyManager tm, NetworkStatsManager nsm, int offset) {
         Map<String, Long> result = new HashMap<>();
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            String subscriberID = null;
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                subscriberID = tm.getSubscriberId();
+            }
             long[] range = UsageUtils.getTimeRange(SortOrder.getSortEnum(offset));
             NetworkStats networkStatsM;
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    networkStatsM = nsm.querySummary(ConnectivityManager.TYPE_MOBILE, UUID.randomUUID().toString(), range[0], range[1]);
+                    networkStatsM = nsm.querySummary(ConnectivityManager.TYPE_MOBILE, subscriberID, range[0], range[1]);
                     if (networkStatsM != null) {
                         while (networkStatsM.hasNextBucket()) {
                             NetworkStats.Bucket bucket = new NetworkStats.Bucket();
