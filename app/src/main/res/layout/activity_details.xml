@@ -81,7 +81,19 @@
                             android:layout_alignStart="@+id/name"
                             android:layout_marginTop="4dp"
                             android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:text="11"/>
+
+                        <TextView
+                            android:id="@+id/wifi_data_used"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/name"
+                            android:layout_alignStart="@+id/name"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"
+                            android:text="22"/>
 
                         <TextView
                             android:id="@+id/last_launched"
