@@ -9,8 +9,8 @@
     </array>
 
     <plurals name="times_launched">
-        <item quantity="one">Time Launched</item>
-        <item quantity="other">Times Launched</item>
+        <item quantity="one">Launch</item>
+        <item quantity="other">Launches</item>
     </plurals>
     <string name="not_active">Device was not active for</string>
     <string name="in_use">In Use</string>
