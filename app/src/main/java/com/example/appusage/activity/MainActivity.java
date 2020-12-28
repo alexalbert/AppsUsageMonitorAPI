@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements UsageContracts.Vi
         , AdapterView.OnItemSelectedListener {
 
     private AppAdapter mAdapter;
+    private int mCurrentVisiblePosition = 0;
+    private RecyclerView mRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements UsageContracts.Vi
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        mCurrentVisiblePosition = ((LinearLayoutManager)mRecycler.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if (Monitor.hasUsagePermission()) {
@@ -57,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements UsageContracts.Vi
     }
 
     private void init() {
-        RecyclerView mRecycler = findViewById(R.id.recycler);
+        mRecycler = findViewById(R.id.recycler);
         mAdapter = new AppAdapter(this);
 
         Spinner spinner = findViewById(R.id.spinner);
@@ -99,5 +107,6 @@ public class MainActivity extends AppCompatActivity implements UsageContracts.Vi
     @Override
     public void getUsageData(List<AppData> usageData, long mTotalUsage, int duration) {
         mAdapter.updateData(usageData);
+        ((LinearLayoutManager) mRecycler.getLayoutManager()).scrollToPosition(mCurrentVisiblePosition);
     }
 }
