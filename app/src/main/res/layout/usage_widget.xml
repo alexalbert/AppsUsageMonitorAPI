@@ -6,12 +6,13 @@
     android:theme="@style/ThemeOverlay.AppsUsageMonitorAPI.AppWidgetContainer">
 
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/light_blue_50"
-        android:columnCount="3"
+        android:columnCount="2"
         android:orientation="horizontal"
-        android:rowCount="3">
+        android:layout_centerInParent="true"
+        android:rowCount="5">
 
 
         <TextView
@@ -32,15 +33,6 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/data1"
-            android:layout_weight="1"
-            android:background="@color/light_blue_50"
-            android:gravity="center"
-            android:padding="8dip"
-            android:textColor="#000000" />
-
-
-        <TextView
             android:id="@+id/name2"
             android:layout_weight="1"
             android:background="@color/light_blue_50"
@@ -51,14 +43,6 @@
 
         <TextView
             android:id="@+id/time2"
-            android:layout_weight="1"
-            android:background="@color/light_blue_50"
-            android:gravity="center"
-            android:padding="8dip"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/data2"
             android:layout_weight="1"
             android:background="@color/light_blue_50"
             android:gravity="center"
@@ -83,30 +67,13 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/data3"
-            android:layout_weight="1"
-            android:background="@color/light_blue_50"
-            android:gravity="center"
-            android:padding="8dip"
-            android:textColor="#000000" />
-
-
-        <TextView
             android:id="@+id/name4"
             android:layout_weight="1"
             android:background="@color/light_blue_50"
             android:gravity="center"
             android:maxLength="12"
             android:padding="8dip"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/time4"
-            android:layout_weight="1"
-            android:background="@color/light_blue_50"
-            android:gravity="center"
-            android:padding="8dip"
-            android:textColor="#000000" />
+            android:textColor="@color/light_blue_900" />
 
         <TextView
             android:id="@+id/data4"
@@ -114,7 +81,7 @@
             android:background="@color/light_blue_50"
             android:gravity="center"
             android:padding="8dip"
-            android:textColor="#000000" />
+            android:textColor="@color/light_blue_900" />
 
         <TextView
             android:id="@+id/name5"
@@ -123,23 +90,16 @@
             android:gravity="center"
             android:maxLength="12"
             android:padding="8dip"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/time5"
-            android:layout_weight="1"
-            android:background="@color/light_blue_50"
-            android:gravity="center"
-            android:padding="8dip"
-            android:textColor="#000000" />
+            android:textColor="@color/light_blue_900" />
 
         <TextView
             android:id="@+id/data5"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:background="@color/light_blue_50"
             android:gravity="center"
             android:padding="8dip"
-            android:textColor="#000000" />
+            android:textColor="@color/light_blue_900" />
 
     </GridLayout>
 </RelativeLayout>
