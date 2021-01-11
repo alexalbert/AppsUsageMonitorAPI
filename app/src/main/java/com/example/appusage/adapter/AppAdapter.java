@@ -38,6 +38,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
 
     public AppAdapter(Context mContext) {
         this.mContext = new WeakReference(mContext);
+        this.setStateRestorationPolicy(StateRestorationPolicy.ALLOW);
     }
 
     public void updateData(List<AppData> data) {
@@ -73,7 +74,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
 
         holder.launch_count.setText(item.mCount + " " + mContext.get().getResources().getQuantityString(R.plurals.times_launched, item.mCount));
 
-        holder.data_used.setText(UsageUtils.humanReadableByteCount(item.mWifi + item.mMobile));
+        holder.data_used_wifi.setText(UsageUtils.humanReadableByteCount(item.mWifi));
+        holder.data_used_mobile.setText(UsageUtils.humanReadableByteCount(item.mMobile));
 
         Glide.with(this.mContext.get())
                 .load(UsageUtils.parsePackageIcon(item.mPackageName, R.mipmap.ic_launcher)).
@@ -84,6 +86,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
             DetailActivity.start((Activity) v.getContext(), item.mPackageName);
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -99,7 +102,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
         private TextView mTime;
         private ImageView mIcon;
         private TextView launch_count;
-        private TextView data_used;
+        private TextView data_used_wifi;
+        private TextView data_used_mobile;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -109,7 +113,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
             mTime = itemView.findViewById(R.id.app_time);
             mIcon = itemView.findViewById(R.id.app_image);
             launch_count = itemView.findViewById(R.id.launch_count);
-            data_used = itemView.findViewById(R.id.data_used);
+            data_used_wifi = itemView.findViewById(R.id.data_used_wifi);
+            data_used_mobile = itemView.findViewById(R.id.data_used_mobile);
         }
     }
 }
