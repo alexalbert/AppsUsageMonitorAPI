@@ -29,6 +29,17 @@ public class UsageUtils {
         }
     }
 
+    public static String shortHumanReadableMillis(long milliSeconds) {
+        long second = milliSeconds / 1000L;
+        if (second < 60) {
+            return String.format("%ss", second);
+        } else if (second < 60 * 60) {
+            return String.format("%sm", second / 60);
+        } else {
+            return String.format("%sh %sm", second / 3600, second % (3600) / 60);
+        }
+    }
+
     public static String humanReadableByteCount(long bytes) {
         int unit = 1024;
         if (bytes < unit) return bytes + " B";
