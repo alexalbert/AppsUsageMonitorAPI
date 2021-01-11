@@ -73,7 +73,7 @@
             android:gravity="center"
             android:maxLength="12"
             android:padding="8dip"
-            android:textColor="@color/light_blue_900" />
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/data4"
@@ -81,7 +81,7 @@
             android:background="@color/light_blue_50"
             android:gravity="center"
             android:padding="8dip"
-            android:textColor="@color/light_blue_900" />
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/name5"
@@ -90,7 +90,7 @@
             android:gravity="center"
             android:maxLength="12"
             android:padding="8dip"
-            android:textColor="@color/light_blue_900" />
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/data5"
@@ -99,7 +99,7 @@
             android:background="@color/light_blue_50"
             android:gravity="center"
             android:padding="8dip"
-            android:textColor="@color/light_blue_900" />
+            android:textColor="@android:color/holo_blue_dark" />
 
     </GridLayout>
 </RelativeLayout>
