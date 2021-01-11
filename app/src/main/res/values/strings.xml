@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppMonitorLibrary</string>
+    <string name="app_name">AppMonitor</string>
 
     <array name="duration">
         <item>TODAY</item>
