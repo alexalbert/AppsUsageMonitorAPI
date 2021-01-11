@@ -33,29 +33,36 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
     val views = RemoteViews(context.packageName, R.layout.usage_widget)
     val u = DataManager.getInstance().getUsedApps(context, 0)
 
+    if (u.size > 0) {
+        views.setTextViewText(R.id.name1, u[0].mName)
+        views.setTextViewText(R.id.time1, UsageUtils.shortHumanReadableMillis(u[0].mUsageTime))
+        views.setTextViewText(R.id.data1, UsageUtils.humanReadableByteCount(u[0].mMobile))
+    }
 
-    views.setTextViewText(R.id.name1, u[0].mName)
-    views.setTextViewText(R.id.time1, UsageUtils.shortHumanReadableMillis(u[0].mUsageTime))
-    views.setTextViewText(R.id.data1, UsageUtils.humanReadableByteCount(u[0].mMobile))
+    if (u.size > 1) {
+        views.setTextViewText(R.id.name2, u[1].mName)
+        views.setTextViewText(R.id.time2, UsageUtils.shortHumanReadableMillis(u[1].mUsageTime))
+        views.setTextViewText(R.id.data2, UsageUtils.humanReadableByteCount(u[1].mMobile))
+    }
 
-    views.setTextViewText(R.id.name2, u[1].mName)
-    views.setTextViewText(R.id.time2, UsageUtils.shortHumanReadableMillis(u[1].mUsageTime))
-    views.setTextViewText(R.id.data2, UsageUtils.humanReadableByteCount(u[1].mMobile))
-
-    views.setTextViewText(R.id.name3, u[2].mName)
-    views.setTextViewText(R.id.time3, UsageUtils.shortHumanReadableMillis(u[2].mUsageTime))
-    views.setTextViewText(R.id.data3, UsageUtils.humanReadableByteCount(u[2].mMobile))
-
+    if (u.size > 2) {
+        views.setTextViewText(R.id.name3, u[2].mName)
+        views.setTextViewText(R.id.time3, UsageUtils.shortHumanReadableMillis(u[2].mUsageTime))
+        views.setTextViewText(R.id.data3, UsageUtils.humanReadableByteCount(u[2].mMobile))
+    }
     u.sortByDescending { it.mMobile }
 
-    views.setTextViewText(R.id.name4, u[0].mName)
-    views.setTextViewText(R.id.time4, UsageUtils.shortHumanReadableMillis(u[0].mUsageTime))
-    views.setTextViewText(R.id.data4, UsageUtils.humanReadableByteCount(u[0].mMobile))
+    if (u.size > 0) {
+        views.setTextViewText(R.id.name4, u[0].mName)
+        views.setTextViewText(R.id.time4, UsageUtils.shortHumanReadableMillis(u[0].mUsageTime))
+        views.setTextViewText(R.id.data4, UsageUtils.humanReadableByteCount(u[0].mMobile))
+    }
 
-    views.setTextViewText(R.id.name5, u[1].mName)
-    views.setTextViewText(R.id.time5, UsageUtils.shortHumanReadableMillis(u[1].mUsageTime))
-    views.setTextViewText(R.id.data5, UsageUtils.humanReadableByteCount(u[1].mMobile))
-
+    if (u.size > 1) {
+        views.setTextViewText(R.id.name5, u[1].mName)
+        views.setTextViewText(R.id.time5, UsageUtils.shortHumanReadableMillis(u[1].mUsageTime))
+        views.setTextViewText(R.id.data5, UsageUtils.humanReadableByteCount(u[1].mMobile))
+    }
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
